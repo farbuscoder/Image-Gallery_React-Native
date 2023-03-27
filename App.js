@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 //Expo
 import { StatusBar } from 'expo-status-bar';
@@ -21,15 +21,17 @@ const Stack = createNativeStackNavigator()
 
 export default function App() {
 
+  const [openSearch, setOpenSearch] = useState(false);
+
   console.log("app executed")
 
   return (
 <NavigationContainer>
 <Stack.Navigator>
-  <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
+  <Stack.Screen name="HomeScreen" options={{
     headerLeft:()=><Image source={pexelsLogo} style={styles.logo}/>,
     headerRight:()=>{
-     return <Text onPress={()=>{console.log("searching")}} style={{color:"white", fontSize:18}} >Search</Text>
+     return <Text onPress={()=>{setOpenSearch(!openSearch)}} style={{color:"white", fontSize:18}} >{openSearch? "Close":"Search"}</Text>
     },
     title:"Pexels App",
     headerTintColor:"#fff",
@@ -39,8 +41,20 @@ export default function App() {
     headerStyle:{
       backgroundColor:"#0d0d0d"
     }
+  }}>
+    {(props)=><HomeScreen {...props} openSearch={openSearch}  />}
+  </Stack.Screen>
+  <Stack.Screen name="ImageScreen" component={ImageScreen} options={{
+      headerLeft:()=><Image source={pexelsLogo} style={styles.logo}/>,
+     title:"Pexels App",
+     headerTintColor:"#fff",
+    headerTitleStyle:{
+     fontWeight:"bold"
+    },
+     headerStyle:{
+       backgroundColor:"#0d0d0d"
+     }
   }} />
-  <Stack.Screen name="ImageScreen" component={ImageScreen} />
 </Stack.Navigator>
 <StatusBar/>
 </NavigationContainer>
