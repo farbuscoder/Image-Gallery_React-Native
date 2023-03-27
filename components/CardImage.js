@@ -13,7 +13,7 @@ const CardImage = ({image}) => {
   return (
     <TouchableOpacity onPress={()=>{navigation.navigate("ImageScreen",{image})}} style={styles.CardImage}>
       <Image source={{
-        uri: image.src.medium? image.src.medium:"https://i.ibb.co/VSpF1rW/no-image-icon-23485.png"
+        uri: image.src.large? image.src.large:"https://i.ibb.co/VSpF1rW/no-image-icon-23485.png"
       }}
       style={{height:180, width:'100%', objectFit:"cover"}}
       />

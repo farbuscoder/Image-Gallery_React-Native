@@ -15,15 +15,13 @@ import HomeScreen from './screens/HomeScreen';
 import ImageScreen from './screens/ImageScreen';
 
 //Image
-import pexelsLogo from "./assets/Pexels-Logo.jpg"
+import pexelsLogo from "./assets/Pexels-Logo.png"
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
 
   const [openSearch, setOpenSearch] = useState(false);
-
-  console.log("app executed")
 
   return (
 <NavigationContainer>

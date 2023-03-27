@@ -15,11 +15,8 @@ const HomeScreen = ({openSearch}) => {
     const [photos, setPhotos]=useState()
     const [searchTerm, setSearchTerm] = useState();
 
-    console.log("home executed")
-
     const loadImages=async (searchTerm)=>{
         const res = await getImages(searchTerm)
-        console.log(res.data)
         setPhotos(res.data.photos)
     }
 
